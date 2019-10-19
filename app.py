@@ -1,12 +1,17 @@
 # Required Imports
 import os
+from build_google_creds import build_creds
 from flask import Flask, request, jsonify
 from firebase_admin import credentials, firestore, initialize_app
 from sentry_sdk import init
 
 sentry_dsn = os.environ.get("SENTRY_DSN")
 if sentry_dsn:
+    print("PROD")
     init(sentry_dsn)
+    build_creds()
+else:
+    print("TEST_MODE")
 
 # Initialize Flask App
 app = Flask(__name__)
