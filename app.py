@@ -6,14 +6,14 @@ from firebase_admin import credentials, firestore, initialize_app
 from sentry_sdk import init
 
 sentry_dsn = os.environ.get("SENTRY_DSN")
-if sentry_dsn:
-    print("PROD")
-    init(sentry_dsn)
-    build_creds()
-else:
-    print("TEST_MODE")
+# Initialize Sentry
+init(sentry_dsn)
 
-# Initialize Flask App
+# Build Environmental Variables
+# run heroku config -s >> .env on your local machine
+build_creds()
+
+# Initialize Flask
 app = Flask(__name__)
 
 # Initialize Firestore DB

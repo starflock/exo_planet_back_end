@@ -1,4 +1,4 @@
-## EXO PLANET BACKEND FOR https://github.com/starflock/exo-plan-it
+## EXO PLANET BACKEND https://github.com/starflock/exo-plan-it
 
 https://exo-planet-starflock.herokuapp.com/
 
@@ -7,6 +7,7 @@ https://exo-planet-starflock.herokuapp.com/
 heroku login
 heroku git:remote -a exo-planet-starflock-backend
 git push heroku master
+heroku config -s >> .env
 ```
 
 ## More Info https://devcenter.heroku.com/articles/git

@@ -3,3 +3,4 @@
 #venv
 project_exo_plan_it_backend
 *.pyc
+.env
