@@ -27,3 +27,5 @@ def build_creds():
         file = open(filename, "w")
         file.write(json.dumps(google_creds))
         file.close()
+
+    print(google_creds)
