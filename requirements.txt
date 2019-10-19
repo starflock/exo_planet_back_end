@@ -1,3 +1,4 @@
 firebase-admin==3.0.0
 Flask==1.1.1
 gunicorn
+sentry-sdk==0.13.0

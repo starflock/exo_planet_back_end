@@ -2,6 +2,12 @@
 import os
 from flask import Flask, request, jsonify
 from firebase_admin import credentials, firestore, initialize_app
+from sentry_sdk import init
+
+sentry_dsn = os.environ.get("SENTRY_DSN")
+if sentry_dsn:
+    init(sentry_dsn)
+
 # Initialize Flask App
 app = Flask(__name__)
 # Initialize Firestore DB
