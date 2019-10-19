@@ -15,12 +15,12 @@ else:
 
 # Initialize Flask App
 app = Flask(__name__)
+
 # Initialize Firestore DB
-cred = credentials.Certificate('starflock-exo-planet-firebase-key.json')
+cred = credentials.Certificate('creds/starflock-exo-planet-firebase-key.json')
 default_app = initialize_app(cred)
 db = firestore.client()
 user_planet_config_table = db.collection('users_planet_configurations')
-# import pdb; pdb.set_trace()
 
 
 @app.route('/', methods=['GET'])

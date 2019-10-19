@@ -1,4 +1,5 @@
 import os
+import json
 
 google_creds = {
     "type": os.environ.get("GOOGLE_FIREBASE_TYPE"),
@@ -15,14 +16,14 @@ google_creds = {
 
 
 def build_creds():
-    filename = "starflock-exo-planet-firebase-key.json"
+    filename = "creds/starflock-exo-planet-firebase-key.json"
     if not os.path.exists(os.path.dirname(filename)):
         os.makedirs(os.path.dirname(filename))
         file = open(filename, "w")
 
-        file.write(google_creds)
+        file.write(json.dumps(google_creds))
         file.close()
     else:
         file = open(filename, "w")
-        file.write(google_creds)
+        file.write(json.dumps(google_creds))
         file.close()
