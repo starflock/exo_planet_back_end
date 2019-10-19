@@ -1,11 +1,17 @@
 import os
 import json
+import sys
+
+if "test_mode" in sys.argv:
+    private_key = os.environ.get("GOOGLE_FIREBASE_PRIVATE_KEY").replace('\\\\n', '\n')
+else:
+    private_key = os.environ.get("GOOGLE_FIREBASE_PRIVATE_KEY").replace('\\n', '\n')
 
 google_creds = {
     "type": os.environ.get("GOOGLE_FIREBASE_TYPE"),
     "project_id": os.environ.get("GOOGLE_FIREBASE_PROJECT_ID"),
     "private_key_id": os.environ.get("GOOGLE_FIREBASE_PRIVATE_KEY_ID"),
-    "private_key": os.environ.get("GOOGLE_FIREBASE_PRIVATE_KEY").replace('\\n', '\n'),
+    "private_key": private_key,
     "client_email": os.environ.get("GOOGLE_FIREBASE_CLIENT_EMAIL"),
     "client_id": os.environ.get("GOOGLE_FIREBASE_CLIENT_ID"),
     "auth_uri": os.environ.get("GOOGLE_FIREBASE_AUTH_URI"),

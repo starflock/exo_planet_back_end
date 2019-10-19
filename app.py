@@ -11,6 +11,7 @@ init(sentry_dsn)
 
 # Build Environmental Variables
 # run heroku config -s >> .env on your local machine
+# run gunicorn app:app test_mode
 build_creds()
 
 # Initialize Flask

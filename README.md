@@ -8,6 +8,7 @@ heroku login
 heroku git:remote -a exo-planet-starflock-backend
 git push heroku master
 heroku config -s >> .env
+gunicorn app:app test_mode
 ```
 
 ## More Info https://devcenter.heroku.com/articles/git
