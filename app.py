@@ -17,7 +17,7 @@ def home():
     """
         Landing Page
     """
-    return jsonify({"Details": "Go to https://github.com/starflock/exo-plan-it"})
+    return jsonify({"Details": "Go to https://github.com/starflock/exo_planet_back_end"})
 
 
 @app.route('/create_user', methods=['POST'])
