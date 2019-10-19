@@ -45,8 +45,7 @@ def create_user():
             return jsonify({"Error": "username is required."}, 400)
         user = get_user_from_db(username)
         if user:
-            update_user_db(username, request)
-            return jsonify({"success": True}), 200
+            return jsonify({"Error": "username is taken."}, 403)
         user_planet_config_table.document(username).set(request.json)
         return jsonify({"success": True}), 200
     except Exception as e:
