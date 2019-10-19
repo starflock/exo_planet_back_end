@@ -19,13 +19,10 @@ def build_creds():
     filename = "creds/starflock-exo-planet-firebase-key.json"
     if not os.path.exists(os.path.dirname(filename)):
         os.makedirs(os.path.dirname(filename))
-        file = open(filename, "w")
-
-        file.write(json.dumps(google_creds))
-        file.close()
+        with open(filename, 'w', encoding='utf-8') as f:
+            json.dump(google_creds, f, ensure_ascii=False, indent=4)
     else:
-        file = open(filename, "w")
-        file.write(json.dumps(google_creds))
-        file.close()
+        with open(filename, 'w', encoding='utf-8') as f:
+            json.dump(google_creds, f, ensure_ascii=False, indent=4)
 
     print(google_creds)
