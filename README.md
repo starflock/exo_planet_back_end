@@ -5,7 +5,7 @@ https://exo-planet-starflock.herokuapp.com/
 ***Heroku Commands***
 ```
 heroku login
-heroku git:remote -a exo-planet-starflock
+heroku git:remote -a exo-planet-starflock-backend
 git push heroku master
 ```
 
