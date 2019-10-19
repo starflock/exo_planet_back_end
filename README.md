@@ -1,4 +1,4 @@
-## EXO PLANET BACKEND https://github.com/starflock/exo-plan-it
+## EXO PLANET BACKEND FOR https://github.com/starflock/exo-plan-it
 
 https://exo-planet-starflock.herokuapp.com/
 
