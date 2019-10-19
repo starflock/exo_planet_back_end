@@ -56,6 +56,13 @@ def update_user_db(username, request):
     user_planet_config_table.document(username).update(request.json)
 
 
+def get_user_from_db_by_username_and_password(username, password):
+    user = user_planet_config_table.document(username).get()
+    if user.get("password") == password:
+        return False
+    return user.to_dict()
+
+
 @app.route('/update_user', methods=['POST', 'PUT'])
 def update_user():
     """
@@ -65,8 +72,15 @@ def update_user():
     """
     try:
         username = request.json['username']
+        password = request.json['password']
         if not username:
             return jsonify({"Error": "username is required."}, 400)
+        if not password:
+            return jsonify({"Error": "password is required."}, 400)
+
+        user = get_user_from_db_by_username_and_password(username, password)
+        if not user:
+            return jsonify({"Error": "Invalid Creds."}, 400)
         update_user_db(username, request)
         return jsonify({"success": True}), 200
     except Exception as e:
