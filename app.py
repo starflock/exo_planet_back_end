@@ -1,5 +1,6 @@
 # Required Imports
 import os
+
 from build_google_creds import build_creds
 from flask import Flask, request, jsonify
 from firebase_admin import credentials, firestore, initialize_app
@@ -25,7 +26,8 @@ default_app = initialize_app(cred)
 db = firestore.client()
 user_planet_config_table = db.collection('users_planet_configurations')
 
-#https://exo-planet-starflock-backend.herokuapp.com/
+
+# https://exo-planet-starflock-backend.herokuapp.com/
 @app.route('/', methods=['GET'])
 def home():
     """
@@ -143,6 +145,34 @@ def delete():
         return jsonify({"success": True}), 200
     except Exception as e:
         return f"An Error Occured: {e}"
+
+
+@app.route('/ishabitable', methods=['GET'])
+def ishabitable():
+    orb_dist = float(request.args.to_dict().get('orbital_distance'))
+    solar_mass = float(request.args.to_dict().get('solar_mass'))
+
+    t_min = 149600000000
+    t_max = 1989000000000000000000000000000
+
+    r_orb = orb_dist * t_min
+
+    l_slmass = solar_mass * (t_max**4)
+
+    s = 0.0000000567
+
+    t1 = 5554571841 * (t_min)
+    t2 = 19356878641 * (t_max)
+
+    val_1 = l_slmass / ((4) * (3.14) * (t1) * (s))
+    r_orb_1 = val_1 ** 0.5
+
+    val_2 = l_slmass / ((4) * (3.14) * (t2) * (s))
+    r_orb_2 = val_2 ** 0.5
+    if r_orb < r_orb_2 and r_orb > r_orb_1:
+        return jsonify({"ishabitable": True}), 200
+
+    return jsonify({"ishabitable": False}), 200
 
 
 port = int(os.environ.get('PORT', 8080))
