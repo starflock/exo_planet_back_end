@@ -1,4 +1,7 @@
-## EXO PLANET BACKEND https://github.com/starflock/exo-plan-it
+## EXO PLANET BACKEND 
+
+**Front End**
+https://github.com/starflock/exo-plan-it
 
 **Project Link**
 https://2019.spaceappschallenge.org/challenges/planets-near-and-far/build-planet-workshop/teams/starflock/project
