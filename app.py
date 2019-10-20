@@ -4,6 +4,7 @@ from build_google_creds import build_creds
 from flask import Flask, request, jsonify
 from firebase_admin import credentials, firestore, initialize_app
 from sentry_sdk import init
+from flask_cors import CORS
 
 sentry_dsn = os.environ.get("SENTRY_DSN")
 # Initialize Sentry
@@ -16,6 +17,7 @@ build_creds()
 
 # Initialize Flask
 app = Flask(__name__)
+CORS(app)
 
 # Initialize Firestore DB
 cred = credentials.Certificate('creds/starflock-exo-planet-firebase-key.json')
@@ -23,7 +25,7 @@ default_app = initialize_app(cred)
 db = firestore.client()
 user_planet_config_table = db.collection('users_planet_configurations')
 
-
+#https://exo-planet-starflock-backend.herokuapp.com/
 @app.route('/', methods=['GET'])
 def home():
     """
