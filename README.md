@@ -7,6 +7,8 @@ https://github.com/starflock/exo-plan-it
 **Project Link**
 https://2019.spaceappschallenge.org/challenges/planets-near-and-far/build-planet-workshop/teams/starflock/project
 
+https://docs.google.com/presentation/d/1fBOi2hf59dSndFoDf7r0PE8IZKEXlFvkl7tnIsrKy5Y/edit?usp=sharing
+
 https://exo-planet-starflock.herokuapp.com/
 
 ***Heroku Commands***
